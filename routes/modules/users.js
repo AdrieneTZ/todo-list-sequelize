@@ -1,13 +1,20 @@
 const express = require('express')
 const router = express.Router()
 
+// import Model
+const db = require('../../models')
+const User = db.User
+const Todo = db.Todo
+
 // routers for register
 router.get('/register', (req, res) => {
   res.render('register')
 })
 
 router.post('/register', (req, res) => {
-  res.send('register')
+  const { name, email, password, confirmPassword } = req.body
+  User.create({ name, email, password })
+    .then(user => res.redirect('/'))
 })
 
 // routers for login

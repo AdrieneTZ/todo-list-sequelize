@@ -8,6 +8,11 @@ const routes = require('./routes')
 const app = express()
 const PORT = 3000
 
+// import Model
+const db = require('./models')
+const User = db.User
+const Todo = db.Todo
+
 app.engine('hbs', exphbs.engine({ defaultLayout: 'main', extname: '.hbs' }))
 app.set('view engine', 'hbs')
 app.set('views', './views')
